@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>dev.philixtheexplorer.buggym</groupId>
+    <artifactId>bug-gym</artifactId>
+    <version>1.0.0</version>
+    
+    <profiles>
+        <!-- Windows Profile -->
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <jpackage.type>MSI</jpackage.type>
+                <jpackage.icon>src/main/resources/icons/${project.artifactId}.ico</jpackage.icon>
+                <jpackage.win.upgrade.uuid>f782d637-4611-4c5a-b579-beee046960bc</jpackage.win.upgrade.uuid>
+                <jpackage.win.menu>true</jpackage.win.menu>
+                <jpackage.win.shortcut>true</jpackage.win.shortcut>
+                <jpackage.win.dir.chooser>true</jpackage.win.dir.chooser>
+            </properties>
+        </profile>
+
+        <!-- Linux Profile -->
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                    <name>!mac os x</name>
+                </os>
+            </activation>
+            <properties>
+                <jpackage.type>DEB</jpackage.type>
+                <jpackage.icon>src/main/resources/icons/${project.artifactId}.png</jpackage.icon>
+                <jpackage.linux.menu.group>Development</jpackage.linux.menu.group>
+                <jpackage.linux.shortcut>true</jpackage.linux.shortcut>
+            </properties>
+        </profile>
+
+        <!-- macOS Profile -->
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <jpackage.type>DMG</jpackage.type>
+                <jpackage.icon>src/main/resources/icons/${project.artifactId}.icns</jpackage.icon>
+                <jpackage.mac.package.identifier>dev.philixtheexplorer.buggym</jpackage.mac.package.identifier>
+            </properties>
+        </profile>
+    </profiles>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <javafx.version>21.0.1</javafx.version>
+    </properties>
+    <dependencies>
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- Markdown parsing -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.21.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark-ext-gfm-tables</artifactId>
+            <version>0.21.0</version>
+        </dependency>
+        
+        <!-- Syntax highlighting for code editor -->
+        <dependency>
+            <groupId>org.fxmisc.richtext</groupId>
+            <artifactId>richtextfx</artifactId>
+            <version>0.11.2</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <name>BugGym</name>
+                    <appVersion>${project.version}</appVersion>
+                    <vendor>PhilixTheExplorer</vendor>
+                    <input>target/staging</input>
+                    <mainJar>${project.artifactId}-${project.version}.jar</mainJar>
+                    <mainClass>dev.philixtheexplorer.buggym.Launcher</mainClass>
+                    
+                    <type>${jpackage.type}</type>
+                    <icon>${jpackage.icon}</icon>
+                    
+                    <!-- Windows Options -->
+                    <winUpgradeUuid>${jpackage.win.upgrade.uuid}</winUpgradeUuid>
+                    <winMenu>${jpackage.win.menu}</winMenu>
+                    <winShortcut>${jpackage.win.shortcut}</winShortcut>
+                    <winDirChooser>${jpackage.win.dir.chooser}</winDirChooser>
+                    
+                    <!-- Linux Options -->
+                    <linuxPackageName>buggym</linuxPackageName>
+                    <linuxMenuGroup>${jpackage.linux.menu.group}</linuxMenuGroup>
+                    <linuxShortcut>${jpackage.linux.shortcut}</linuxShortcut>
+                    
+                    <!-- Mac Options -->
+                    <macPackageIdentifier>${jpackage.mac.package.identifier}</macPackageIdentifier>
+                    
+                    <destination>dist</destination>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <!-- Default configuration for running -->
+                        <!-- Usage: mvn clean javafx:run -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>dev.philixtheexplorer.buggym.Launcher</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

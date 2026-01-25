@@ -1,0 +1,161 @@
+/* Code Editor Syntax Highlighting Styles */
+
+.code-editor {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 0;
+}
+
+.code-editor .code-area {
+    -fx-background-color: #1e1e1e;
+    -fx-font-family: "Consolas", "Fira Code", "JetBrains Mono", "Courier New", monospace;
+    -fx-font-size: 14px;
+}
+
+.code-area {
+    -fx-background-color: #1e1e1e;
+}
+
+.code-area .text {
+    -fx-fill: #d4d4d4;
+}
+
+.code-area .paragraph-box:has-caret {
+    -fx-background-color: #2d2d2d;
+}
+
+.code-area .caret {
+    -fx-stroke: #d4d4d4;
+}
+
+.code-area .selection {
+    -fx-fill: #264f78;
+}
+
+/* Line numbers */
+.code-area .lineno {
+    -fx-background-color: #1e1e1e;
+    -fx-fill: #858585;
+    -fx-font-size: 13px;
+    -fx-padding: 0 10px 0 5px;
+}
+
+.code-area .paragraph-box .lineno {
+    -fx-padding: 0 10px 0 5px;
+}
+
+/* Syntax highlighting classes */
+.code-area .keyword {
+    -fx-fill: #569cd6;
+    -fx-font-weight: bold;
+}
+
+.code-area .string {
+    -fx-fill: #ce9178;
+}
+
+.code-area .comment {
+    -fx-fill: #6a9955;
+    -fx-font-style: italic;
+}
+
+.code-area .number {
+    -fx-fill: #b5cea8;
+}
+
+.code-area .annotation {
+    -fx-fill: #dcdcaa;
+}
+
+.code-area .paren {
+    -fx-fill: #ffd700;
+}
+
+.code-area .brace {
+    -fx-fill: #da70d6;
+}
+
+.code-area .bracket {
+    -fx-fill: #179fff;
+}
+
+.code-area .semicolon {
+    -fx-fill: #d4d4d4;
+}
+
+/* Virtual flow (scrolling area) */
+.code-area .virtual-flow {
+    -fx-background-color: #1e1e1e;
+}
+
+.code-area .virtual-flow .scroll-bar {
+    -fx-background-color: #1e1e1e;
+}
+
+.code-area .virtual-flow .scroll-bar .thumb {
+    -fx-background-color: #464647;
+    -fx-background-radius: 3px;
+}
+
+.code-area .virtual-flow .scroll-bar .thumb:hover {
+    -fx-background-color: #686869;
+}
+
+.code-area .virtual-flow .scroll-bar .track {
+    -fx-background-color: #1e1e1e;
+}
+
+.code-area .virtual-flow .scroll-bar .increment-button,
+.code-area .virtual-flow .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.code-area .virtual-flow .scroll-bar .increment-arrow,
+.code-area .virtual-flow .scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* Light mode overrides */
+.light-mode .code-editor,
+.light-mode .code-area,
+.light-mode .code-area .virtual-flow,
+.light-mode .code-area .lineno {
+    -fx-background-color: #ffffff;
+}
+
+.light-mode .code-area .text {
+    -fx-fill: #333333;
+}
+
+.light-mode .code-area .lineno {
+    -fx-fill: #999999;
+}
+
+.light-mode .code-area .paragraph-box:has-caret {
+    -fx-background-color: #f0f0f0;
+}
+
+.light-mode .code-area .selection {
+    -fx-fill: #add6ff;
+}
+
+.light-mode .code-area .keyword {
+    -fx-fill: #0000ff;
+}
+
+.light-mode .code-area .string {
+    -fx-fill: #a31515;
+}
+
+.light-mode .code-area .comment {
+    -fx-fill: #008000;
+}
+
+.light-mode .code-area .number {
+    -fx-fill: #098658;
+}
+
+.light-mode .code-area .annotation {
+    -fx-fill: #808000;
+}

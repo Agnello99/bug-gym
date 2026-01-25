@@ -1,0 +1,600 @@
+/* BugGym - Main Stylesheet */
+
+/* ============================================
+   Root & Dark Mode
+   ============================================ */
+.root {
+    -fx-background-color: -mm-bg-primary;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+
+    /* Color variables */
+    -mm-bg-primary: #1e1e1e;
+    -mm-bg-secondary: #252526;
+    -mm-bg-tertiary: #2d2d2d;
+    -mm-text-primary: #e0e0e0;
+    -mm-text-secondary: #a0a0a0;
+    -mm-accent: #569cd6;
+    -mm-accent-hover: #6cb0e0;
+    -mm-success: #4ec9b0;
+    -mm-error: #f14c4c;
+    -mm-warning: #dcdcaa;
+    -mm-border: #404040;
+    -mm-text-on-accent: #1e1e1e;
+    
+    /* Selection colors */
+    -mm-selection-bg: #264f78;
+    -mm-selection-fg: #ffffff;
+}
+
+.root.light-mode {
+    -mm-bg-primary: #ffffff;
+    -mm-bg-secondary: #f5f5f5;
+    -mm-bg-tertiary: #e8e8e8;
+    -mm-text-primary: #333333;
+    -mm-text-secondary: #666666;
+    -mm-accent: #0066cc;
+    -mm-accent-hover: #0077ee;
+    -mm-success: #28a745;
+    -mm-error: #dc3545;
+    -mm-warning: #856404;
+    -mm-border: #cccccc;
+    -mm-text-on-accent: #ffffff;
+    
+    /* Selection colors */
+    -mm-selection-bg: #e0e0e0;
+    -mm-selection-fg: #000000;
+}
+
+/* ============================================
+   Custom Title Bar
+   ============================================ */
+.title-bar {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-padding: 0;
+    -fx-min-height: 32px;
+    -fx-border-color: -mm-border;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.app-icon {
+    -fx-font-size: 16px;
+    -fx-padding: 0 8px 0 12px;
+}
+
+.window-controls {
+    -fx-spacing: 0;
+    -fx-alignment: center;
+}
+
+.window-controls .window-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -mm-text-primary;
+    -fx-font-size: 12px;
+    -fx-min-width: 46px;
+    -fx-min-height: 32px;
+    -fx-max-height: 32px;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
+
+.window-controls .window-btn:hover {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.window-controls .close-btn:hover {
+    -fx-background-color: #e81123;
+    background-color: #e81123;
+    -fx-text-fill: white;
+}
+
+/* ============================================
+   Top Container
+   ============================================ */
+.top-container {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-padding: 0;
+    -fx-spacing: 0;
+}
+
+/* ============================================
+   Menu Bar
+   ============================================ */
+.main-menu-bar {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+}
+
+.main-menu-bar>.container {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.main-menu-bar .menu {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+}
+
+.main-menu-bar .menu .label {
+    -fx-text-fill: -mm-text-primary;
+    -fx-font-size: 13px;
+}
+
+.main-menu-bar .menu:hover,
+.main-menu-bar .menu:showing {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.main-menu-bar .menu:hover .label,
+.main-menu-bar .menu:showing .label {
+    -fx-text-fill: -mm-accent;
+}
+
+.menu-item {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-padding: 8px 20px 8px 12px;
+}
+
+.menu-item .label {
+    -fx-text-fill: -mm-text-primary;
+    -fx-font-size: 13px;
+}
+
+.menu-item:hover,
+.menu-item:focused {
+    -fx-background-color: -mm-selection-bg;
+}
+
+.menu-item:hover .label,
+.menu-item:focused .label {
+    -fx-text-fill: -mm-selection-fg;
+}
+
+.menu-item .accelerator-text {
+    -fx-text-fill: -mm-text-secondary;
+    -fx-font-size: 12px;
+}
+
+.menu-item:hover .accelerator-text,
+.menu-item:focused .accelerator-text {
+    -fx-text-fill: -mm-selection-fg;
+}
+
+.context-menu {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-border-color: -mm-border;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 4px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+}
+
+.separator-menu-item {
+    -fx-padding: 4px 0;
+}
+
+.separator-menu-item .line {
+    -fx-border-color: -mm-border;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.check-menu-item:checked .label {
+    -fx-text-fill: -mm-accent;
+}
+
+.check-menu-item:checked:hover .label,
+.check-menu-item:checked:focused .label {
+    -fx-text-fill: -mm-selection-fg;
+}
+
+/* ============================================
+   Sidebar
+   ============================================ */
+.sidebar {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-border-color: -mm-border;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.sidebar-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -mm-text-primary;
+    -fx-padding: 5px 0 10px 0;
+}
+
+.progress-label {
+    -fx-text-fill: -mm-text-secondary;
+    -fx-font-size: 12px;
+    -fx-padding: 10px 0 0 0;
+}
+
+/* ============================================
+   TreeView
+   ============================================ */
+.question-tree {
+    -fx-background-color: transparent;
+    -fx-border-color: -mm-border;
+    -fx-border-radius: 5px;
+}
+
+.question-tree .tree-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -mm-text-primary;
+    -fx-padding: 6px 10px;
+}
+
+.question-tree .tree-cell:selected {
+    -fx-background-color: -mm-accent;
+    -fx-text-fill: white;
+}
+
+.question-tree .tree-cell:hover:filled: !selected {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.question-tree .tree-cell.category-cell {
+    -fx-font-weight: bold;
+    -fx-text-fill: -mm-warning;
+}
+
+.question-tree .tree-cell.category-cell:selected {
+    -fx-text-fill: white;
+}
+
+.question-tree .tree-cell.solved-cell {
+    -fx-text-fill: -mm-success;
+}
+
+.question-tree .tree-cell.solved-cell:selected {
+    -fx-text-fill: white;
+}
+
+/* ============================================
+   Split Panes
+   ============================================ */
+.split-pane {
+    -fx-background-color: -mm-bg-primary;
+}
+
+.split-pane>.split-pane-divider {
+    -fx-background-color: -mm-border;
+    -fx-padding: 2px;
+}
+
+/* ============================================
+   Question View Container
+   ============================================ */
+.question-container {
+    -fx-background-color: -mm-bg-primary;
+    -fx-padding: 0;
+}
+
+/* ============================================
+   Code Container
+   ============================================ */
+.code-container {
+    -fx-background-color: -mm-bg-primary;
+}
+
+.editor-box,
+.results-box {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+}
+
+.section-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -mm-text-primary;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.button {
+    -fx-background-color: -mm-bg-tertiary;
+    -fx-text-fill: -mm-text-primary;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -mm-border;
+}
+
+.action-button {
+    -fx-font-size: 14px;
+    -fx-min-width: 100px;
+}
+
+.run-button {
+    -fx-background-color: -mm-accent;
+    -fx-text-fill: white;
+}
+
+.run-button:hover {
+    -fx-background-color: -mm-accent-hover;
+}
+
+.submit-button {
+    -fx-background-color: -mm-success;
+    -fx-text-fill: white;
+}
+
+.submit-button:hover {
+    -fx-background-color: derive(-mm-success, 20%);
+}
+
+/* ============================================
+   Toggle Button
+   ============================================ */
+.toggle-button {
+    -fx-background-color: -mm-bg-tertiary;
+    -fx-text-fill: -mm-text-primary;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -mm-accent;
+    -fx-text-fill: white;
+}
+
+/* ============================================
+   Results Panel
+   ============================================ */
+.results-panel {
+    -fx-background-color: -mm-bg-tertiary;
+    -fx-background-radius: 5px;
+}
+
+.results-summary {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -mm-text-primary;
+}
+
+.results-summary.success {
+    -fx-text-fill: -mm-success;
+}
+
+.results-summary.failure {
+    -fx-text-fill: -mm-error;
+}
+
+.results-details {
+    -fx-background-color: -mm-bg-primary;
+    -fx-text-fill: -mm-text-primary;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 13px;
+}
+
+/* ============================================
+   TextArea
+   ============================================ */
+.text-area {
+    -fx-background-color: -mm-bg-tertiary;
+    -fx-text-fill: -mm-text-primary;
+}
+
+.text-area .content {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.text-area .scroll-pane .viewport {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+/* ============================================
+   ScrollBar
+   ============================================ */
+.scroll-bar {
+    -fx-background-color: -mm-bg-secondary;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -mm-border;
+    -fx-background-radius: 3px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: derive(-mm-border, 20%);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ============================================
+   ScrollPane
+   ============================================ */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane>.viewport {
+    -fx-background-color: transparent;
+}
+
+/* ============================================
+   Alert Dialogs
+   ============================================ */
+.alert .dialog-pane {
+    -fx-background-color: -mm-bg-secondary;
+}
+
+.alert .dialog-pane .content {
+    -fx-text-fill: -mm-text-primary;
+}
+
+.alert .dialog-pane .header-panel {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.alert .dialog-pane .header-panel .label {
+    -fx-text-fill: -mm-text-primary;
+}
+
+/* ============================================
+   Results Table
+   ============================================ */
+.results-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.results-scroll-pane>.viewport {
+    -fx-background-color: transparent;
+}
+
+.results-container {
+    -fx-background-color: transparent;
+}
+
+.result-header-row {
+    -fx-background-color: -mm-bg-tertiary;
+    -fx-border-color: -mm-border;
+    -fx-border-width: 0 0 2px 0;
+    -fx-font-weight: bold;
+}
+
+.result-header-row .label {
+    -fx-text-fill: -mm-text-primary;
+}
+
+.result-row {
+    -fx-background-color: -mm-bg-secondary;
+    -fx-border-color: -mm-border;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.result-row .label {
+    -fx-text-fill: -mm-text-primary;
+}
+
+.result-row:hover {
+    -fx-background-color: -mm-bg-tertiary;
+}
+
+.result-row-failed {
+    -fx-background-color: rgba(241, 76, 76, 0.15);
+}
+
+.result-row-failed:hover {
+    -fx-background-color: rgba(241, 76, 76, 0.25);
+}
+
+/* Text Colors */
+.text-success {
+    -fx-text-fill: -mm-success;
+    -fx-font-weight: bold;
+}
+
+.text-failure {
+    -fx-text-fill: -mm-error;
+    -fx-font-weight: bold;
+}
+
+.compilation-error {
+    -fx-text-fill: -mm-error;
+    -fx-font-family: "Consolas", monospace;
+    -fx-padding: 10px;
+    -fx-background-color: rgba(241, 76, 76, 0.1);
+}
+
+.hint-text {
+    -fx-text-fill: -mm-text-primary;
+    -fx-font-size: 14px;
+    -fx-background-color: -mm-bg-secondary;
+    -fx-background-radius: 5px;
+    -fx-border-color: -mm-accent;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 10px;
+}
+
+/* Small Button */
+.small-button {
+    -fx-padding: 4px 12px;
+    -fx-font-size: 12px;
+    -fx-background-color: -mm-bg-primary;
+    -fx-border-color: -mm-border;
+    -fx-text-fill: -mm-text-primary;
+    -fx-cursor: hand;
+}
+
+.small-button:hover {
+    -fx-background-color: -mm-accent;
+    -fx-text-fill: white;
+    -fx-border-color: -mm-accent;
+}
+
+/* ============================================
+   Diff Dialog
+   ============================================ */
+.diff-dialog {
+    -fx-background-color: -mm-bg-secondary;
+}
+
+.diff-text-area {
+    -fx-font-family: "Consolas", monospace;
+    -fx-control-inner-background: -mm-bg-primary;
+    -fx-text-fill: -mm-text-primary;
+}
+
+.diff-text-area .content {
+    -fx-background-color: -mm-bg-primary;
+}
+
+.diff-flow {
+    -fx-background-color: -mm-bg-primary;
+    -fx-padding: 15px;
+    -fx-border-color: -mm-border;
+    -fx-border-radius: 3px;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 14px;
+}
+
+.diff-text {
+    -fx-fill: -mm-text-primary;
+}
+
+.diff-match {
+    -fx-fill: -mm-text-secondary;
+}
+
+.diff-mismatch {
+    -fx-fill: -mm-error;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+}
+
+.diff-missing {
+    -fx-fill: -mm-warning;
+    -fx-strikethrough: true;
+}
+
+.diff-dialog .label {
+    -fx-text-fill: -mm-text-primary;
+}

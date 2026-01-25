@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Build & Release (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            psep: ':'
+          - os: windows-latest
+            psep: ';'
+          - os: macos-latest
+            psep: ':'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: Install Linux Tools
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm binutils fakeroot
+
+      - name: Build and Prepare Staging
+        shell: bash
+        run: |
+          mvn -B clean package dependency:copy-dependencies
+          mkdir -p target/staging
+          cp target/dependency/*.jar target/staging/
+          cp target/bug-gym-*.jar target/staging/
+
+      - name: Create Installer
+        shell: bash
+        run: mvn jpackage:jpackage
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          name: BugGym ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          files: |
+            dist/*.msi
+            dist/*.dmg
+            dist/*.deb

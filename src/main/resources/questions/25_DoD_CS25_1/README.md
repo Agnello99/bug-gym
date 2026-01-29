@@ -56,7 +56,7 @@ A R
 
 | **Input** | **Result** |
 | --- | --- |
-| Hello Java <br> 2 <br> E T <br> A R | VRJ OLLTH |
+| Hello Java <br> 2 <br> E T <br> A R | RVRJ OLLTH |
 
 ---
 

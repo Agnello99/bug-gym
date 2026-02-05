@@ -102,6 +102,9 @@ public class App extends Application {
 
         // Select first question if available
         selectFirstQuestion();
+
+        // Check for updates silently
+        checkForUpdates(true);
     }
 
     private BorderPane createMainLayout() {
@@ -168,7 +171,7 @@ public class App extends Application {
         toggleSidebarItem.setOnAction(e -> toggleSidebar());
 
         viewMenu.getItems().addAll(darkModeItem, new SeparatorMenuItem(), toggleSidebarItem);
-        
+
         viewMenu.getItems().add(new SeparatorMenuItem());
 
         MenuItem zoomInItem = new MenuItem("Zoom In");
@@ -235,12 +238,13 @@ public class App extends Application {
         keyboardShortcutsItem.setOnAction(e -> showKeyboardShortcuts());
 
         MenuItem checkUpdatesItem = new MenuItem("Check for Updates...");
-        checkUpdatesItem.setOnAction(e -> checkForUpdates());
+        checkUpdatesItem.setOnAction(e -> checkForUpdates(false));
 
         MenuItem aboutItem = new MenuItem("About BugGym");
         aboutItem.setOnAction(e -> showAbout());
 
-        helpMenu.getItems().addAll(showHintItem, keyboardShortcutsItem, new SeparatorMenuItem(), checkUpdatesItem, aboutItem);
+        helpMenu.getItems().addAll(showHintItem, keyboardShortcutsItem, new SeparatorMenuItem(), checkUpdatesItem,
+                aboutItem);
 
         menuBar.getMenus().addAll(fileMenu, editMenu, viewMenu, runMenu, categoriesMenu, helpMenu);
         return menuBar;
@@ -522,7 +526,7 @@ public class App extends Application {
     }
 
     private void handleSuccessfulSubmission(RunResult result) {
-         currentQuestion.setSolved(true);
+        currentQuestion.setSolved(true);
         currentQuestion.setUserCode(codeEditor.getCode());
         progressManager.saveProgress(currentQuestion);
         questionTree.refreshQuestion(currentQuestion);
@@ -644,7 +648,7 @@ public class App extends Application {
         sourceLink.setOnAction(e -> getHostServices().showDocument(sourceLink.getText()));
 
         Text t2 = new Text("""
-                
+
 
                 License: GPLv3
 
@@ -674,7 +678,7 @@ public class App extends Application {
         return "dev";
     }
 
-    private void checkForUpdates() {
+    private void checkForUpdates(boolean silent) {
         Task<String> task = new Task<>() {
             @Override
             protected String call() throws Exception {
@@ -699,9 +703,11 @@ public class App extends Application {
             String latest = task.getValue();
             String current = getAppVersion();
             if (latest == null) {
-                showInfo("Update Check", "Could not retrieve version info.");
+                if (!silent)
+                    showInfo("Update Check", "Could not retrieve version info.");
             } else if ("dev".equals(current) || compareVersions(current, latest) < 0) {
-                Alert alert = createStyledAlert(Alert.AlertType.INFORMATION, "Update Available", "A new version is available: v" + latest);
+                Alert alert = createStyledAlert(Alert.AlertType.INFORMATION, "Update Available",
+                        "A new version is available: v" + latest);
 
                 Text t1 = new Text("You have v" + current + ".\nVisit ");
                 Hyperlink link = new Hyperlink("https://github.com/PhilixTheExplorer/bug-gym/releases");
@@ -713,10 +719,14 @@ public class App extends Application {
 
                 alert.showAndWait();
             } else {
-                showInfo("Up to Date", "You are running the latest version (v" + current + ").");
+                if (!silent)
+                    showInfo("Up to Date", "You are running the latest version (v" + current + ").");
             }
         });
-        task.setOnFailed(e -> showInfo("Update Check", "Could not check for updates."));
+        task.setOnFailed(e -> {
+            if (!silent)
+                showInfo("Update Check", "Could not check for updates.");
+        });
         new Thread(task).start();
     }
 
@@ -727,12 +737,15 @@ public class App extends Application {
             int n2 = 0;
             try {
                 n1 = i < a.length ? Integer.parseInt(a[i].replaceAll("\\D.*", "")) : 0;
-            } catch(NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
             try {
                 n2 = i < b.length ? Integer.parseInt(b[i].replaceAll("\\D.*", "")) : 0;
-            } catch(NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
 
-            if (n1 != n2) return Integer.compare(n1, n2);
+            if (n1 != n2)
+                return Integer.compare(n1, n2);
         }
         return 0;
     }

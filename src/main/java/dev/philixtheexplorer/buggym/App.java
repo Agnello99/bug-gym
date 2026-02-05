@@ -21,7 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -61,6 +61,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+        // Load custom fonts
+        Font.loadFont(getClass().getResourceAsStream("/fonts/JetBrainsMono-Regular.ttf"), 14);
+
         this.primaryStage = stage;
         // Initialize services
         questionLoader = new QuestionLoader();

